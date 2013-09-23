@@ -1,4 +1,4 @@
-class serverbackup_cdp_agent::packages {
+class serverbackup_cdp::agent::packages {
     if $operatingsystem == ('redhat' or 'centos') {
         if !defined(Package['kernel-devel']) {
             package { 'kernel-devel':
@@ -20,14 +20,14 @@ class serverbackup_cdp_agent::packages {
         if $kernelrelease  =~ /pve/ {
             package { "pve-headers-${kernelrelease}":
                 ensure  => installed,
-                require => Class['serverbackup_cdp_agent::repo'],
+                require => Class['serverbackup_cdp::repo'],
                 before => Package['serverbackup-enterprise-agent'],
             }
         }
         else {
             package { "linux-headers-${kernelrelease}":
                 ensure  => installed,
-                require => Class['serverbackup_cdp_agent::repo'],
+                require => Class['serverbackup_cdp::repo'],
                 before => Package['serverbackup-enterprise-agent'],
             }
         }
@@ -35,6 +35,6 @@ class serverbackup_cdp_agent::packages {
 
     package { 'serverbackup-enterprise-agent':
         ensure  => installed,
-        require => Class['serverbackup_cdp_agent::repo'],
+        require => Class['serverbackup_cdp::repo'],
     }
 }
