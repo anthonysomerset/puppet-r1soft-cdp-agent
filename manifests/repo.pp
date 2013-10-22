@@ -15,7 +15,7 @@ class serverbackup_cdp::repo {
                 release     => 'stable',
                 repos       => 'main',
                 include_src => false,
-                key         => 'B1D53877',
+                key         => 'A40384ED',
                 key_source  => 'http://repo.r1soft.com/apt/r1soft.asc',
             }
         }
